@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>雷凡｜Java 开发工程师 · 后端与 AI 应用</title>
-  <meta name="description" content="雷凡，Java 开发工程师，专注 Spring Boot 后端、Redis 缓存优化与 AI 应用落地。查看工作经历、全栈项目与技术栈。">
+  <meta name="description" content="雷凡，Java 开发工程师，专注 Spring Boot 后端、SQL 与索引优化、Redis 缓存、Kafka 异步解耦与 AI 应用落地。查看工作经历、全栈项目与技术栈。">
   <meta name="author" content="雷凡">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#f3efe6">
@@ -51,6 +51,8 @@
       "PostgreSQL",
       "Redis",
       "Kafka",
+      "Spring AI",
+      "MyBatis",
       "Docker",
       "AI Function Calling",
       "RAG"
@@ -95,8 +97,8 @@
             <dd>高频统计查询耗时降低</dd>
           </div>
           <div>
-            <dt>100<small>%</small></dt>
-            <dd>校园问答原文匹配</dd>
+            <dt>14<small>页</small></dt>
+            <dd>商城页面原生手写</dd>
           </div>
           <div>
             <dt>2<small>段</small></dt>
@@ -123,8 +125,8 @@
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <span>SPRING BOOT</span><span>REDIS</span><span>SQL OPTIMIZATION</span><span>AI FUNCTION CALLING</span><span>SSE</span><span>FULL-STACK</span>
-        <span>SPRING BOOT</span><span>REDIS</span><span>SQL OPTIMIZATION</span><span>AI FUNCTION CALLING</span><span>SSE</span><span>FULL-STACK</span>
+        <span>SPRING BOOT</span><span>REDIS</span><span>SQL OPTIMIZATION</span><span>KAFKA</span><span>SPRING AI</span><span>FULL-STACK</span>
+        <span>SPRING BOOT</span><span>REDIS</span><span>SQL OPTIMIZATION</span><span>KAFKA</span><span>SPRING AI</span><span>FULL-STACK</span>
       </div>
     </div>
 
@@ -201,9 +203,10 @@
                 <li>独立设计 IOP 触客数据报表，实现四级地域下钻分析，替代各地市依赖 Excel 统计的低效模式。</li>
                 <li>实现十余项业务口径的 SQL 计算逻辑，处理“可外呼数据量 = 总客户量 − 四通道占用量并集”的多集合去重运算。</li>
                 <li>完成标题模糊检索、分页倒序查询与评价聚合统计，消除手工计算错位与口径不一致的问题；检索响应满足日均数千次实时查询。</li>
+                <li>针对接口查询慢的问题优化核心业务表索引与 SQL 执行计划，减少数据库磁盘 IO；同时引入 Kafka 异步解耦非实时业务，降低接口同步耗时并提升吞吐能力。</li>
               </ul>
               <div class="tag-row" aria-label="使用技术">
-                <span>SQL</span><span>数据报表</span><span>模糊检索</span><span>聚合统计</span>
+                <span>SQL</span><span>索引优化</span><span>Kafka</span><span>异步解耦</span>
               </div>
             </div>
           </article>
@@ -224,11 +227,11 @@
               </div>
               <ul class="detail-list">
                 <li>独立开发智慧监管车辆通行系统功能，完成车辆离监确认、照片上传及影像资料关联等业务模块，提升车辆通行信息的完整性与可追溯性。</li>
-                <li>参与优化 Redis 缓存及统计接口，改善高频统计数据读取效率，降低数据库查询压力，<strong>耗时降低约 96.9%</strong>。</li>
+                <li>参与优化 Redis 缓存并设计统计索引，改善高频统计数据读取效率，降低数据库查询压力，<strong>查询耗时降低约 96.9%</strong>。</li>
                 <li>参与设备下发异常排查，梳理指令、回执与任务状态的关联逻辑，完善执行结果反馈，方便运维识别失败任务并定位问题。</li>
               </ul>
               <div class="tag-row" aria-label="使用技术">
-                <span>Redis</span><span>统计接口</span><span>业务建模</span><span>异常排查</span>
+                <span>Redis</span><span>索引设计</span><span>统计接口</span><span>异常排查</span>
               </div>
             </div>
           </article>
@@ -240,9 +243,9 @@
       <div class="section-heading section-heading-row reveal">
         <div>
           <p class="section-index">03 / 项目</p>
-          <h2 id="projects-title">两个完整系统，<br>两种工程练习。</h2>
+          <h2 id="projects-title">一条完整交易链路，<br>一套 AI 工具调用实践。</h2>
         </div>
-        <p class="section-aside">从交易链路的一致性，到 AI 对话的可控性与响应速度。</p>
+        <p class="section-aside">从订单、库存与缓存的一致性，到知识检索、工具调用和会话稳定性。</p>
       </div>
 
       <article class="project-card reveal">
@@ -261,119 +264,50 @@
 
             <div class="project-highlights">
               <div>
-                <span class="highlight-label">AI 链路</span>
-                <h4>零 SDK 依赖的 Function Calling</h4>
-                <p>使用 Java 原生 HttpURLConnection 手写 400+ 行 JSON 解析逻辑，完成“模型决策工具选择 → 后端执行真实数据查询 → 结果注入上下文 → 二次生成回复”的完整闭环。</p>
-              </div>
-              <div>
-                <span class="highlight-label">知识注入</span>
-                <h4>知识库 + 角色人格双层 Prompt</h4>
-                <p>校园问题自动检索原文段落，将通用模型不足 30% 的原文匹配率提升至 100%，单轮回复长度缩短约 60%。</p>
-              </div>
-              <div>
                 <span class="highlight-label">交易一致性</span>
-                <h4>7 步原子结算流程</h4>
-                <p>基于 Spring @Transactional 封装购物车校验、库存检查、BigDecimal 计价、订单号生成、主表写入、订单项批量落库与清空购物车；配合 Redis + 唯一请求 ID 实现幂等，库存乐观锁规避超卖。</p>
+                <h4>结算幂等 + 原子库存扣减</h4>
+                <p>针对重复提交与并发超卖风险，设计 requestId + 数据库唯一索引的结算幂等方案，并通过带库存条件的原子 SQL 扣减库存；结合 Spring 事务保证订单、库存、订单明细与购物车一致，取消订单自动回补库存。</p>
               </div>
               <div>
-                <span class="highlight-label">安全边界</span>
-                <h4>Token 双模式鉴权</h4>
-                <p>自定义 LoginInterceptor 区分 AJAX 与页面请求，分别返回 JSON 401 或重定向登录页；白名单 API 从 20 余个精简至 5 个，攻击面缩减约 75%。</p>
-              </div>
-            </div>
-          </div>
-
-          <aside class="project-side">
-            <div class="project-stat">
-              <strong>100<small>%</small></strong>
-              <span>校园问答原文匹配</span>
-            </div>
-            <div class="project-stat">
-              <strong>−60<small>%</small></strong>
-              <span>单轮回复长度</span>
-            </div>
-            <div class="project-stat">
-              <strong>7<small>步</small></strong>
-              <span>事务内原子结算</span>
-            </div>
-
-            <div class="flow-card">
-              <p class="flow-title">AI FUNCTION CALLING</p>
-              <ol class="flow-list">
-                <li>模型决策</li>
-                <li>工具调用</li>
-                <li>真实数据查询</li>
-                <li>上下文注入</li>
-                <li>二次生成回复</li>
-              </ol>
-            </div>
-          </aside>
-        </div>
-
-        <footer class="project-footer">
-          <div class="tag-row" aria-label="技术栈">
-            <span>Spring Boot</span><span>MyBatis-Plus</span><span>MySQL</span><span>Redis</span><span>DeepSeek API</span><span>Nginx</span><span>Vercel</span>
-          </div>
-          <span class="project-type">FULL-STACK / COMMERCE</span>
-        </footer>
-      </article>
-
-      <article class="project-card project-card-alt reveal">
-        <header class="project-header">
-          <div class="project-number">02</div>
-          <div class="project-title">
-            <h3>智慧校园服务</h3>
-            <p>校园生活服务系统 · 全栈开发</p>
-          </div>
-          <time datetime="2024-05">2024.05 — 2025.03</time>
-        </header>
-
-        <div class="project-grid">
-          <div class="project-content">
-            <p class="project-lead">独立设计并开发的校园服务系统，包含用户端小程序、商家管理后台，实现下单、支付、订单流转、配送及 AI 对话、AI 查询在内的完整校园生活服务。</p>
-
-            <div class="project-highlights">
-              <div>
-                <span class="highlight-label">知识问答</span>
-                <h4>RAG 检索增强链路</h4>
-                <p>针对工作室私域非结构化文档，将私域知识与模型推理结合，降低幻觉并提升问答准确性。</p>
+                <span class="highlight-label">缓存与查询</span>
+                <h4>Redis Cache-Aside + 批量查询</h4>
+                <p>高频商品详情引入 Redis Cache-Aside，采用 30～35 分钟随机 TTL，并在商品更新、删除及上下架后主动失效；购物车和订单明细改为批量查询，补充状态分类与用户订单时间组合索引，缓存不可用时自动降级查库。</p>
               </div>
               <div>
-                <span class="highlight-label">实时查询</span>
-                <h4>@Tool 驱动的动态数据访问</h4>
-                <p>将项目详情、订单信息、配送状态封装为工具函数，让模型按意图自动调用，实现“自然语言 → 实时查库”，弥补 RAG 无法覆盖动态结构化数据的问题。</p>
+                <span class="highlight-label">知识增强</span>
+                <h4>RAG + Function Calling 双通路</h4>
+                <p>针对工作室私域非结构化文档构建 RAG 检索增强链路；同时通过 @Tool 将项目详情、订单信息和配送状态封装为工具函数，由模型按意图实时查库，补足 RAG 对动态结构化数据覆盖不足的问题。</p>
               </div>
               <div>
-                <span class="highlight-label">会话与稳定性</span>
+                <span class="highlight-label">会话稳定性</span>
                 <h4>Redis 记忆 + 用户级限流</h4>
-                <p>通过 RedisChatMemory 持久化每用户多轮对话上下文，解决服务重启或多实例部署下的记忆丢失；结合用户维度滑动窗口限流，保护 API Key 并保障高并发稳定性。</p>
-              </div>
-              <div>
-                <span class="highlight-label">交互体验</span>
-                <h4>SSE 流式响应</h4>
-                <p>对话接口采用 SSE 输出，将首字等待从秒级降至毫秒级，提升长回答场景下的交互体验。</p>
+                <p>基于 Redis 持久化每用户多轮对话上下文，解决服务重启或多实例部署下的记忆丢失问题；结合用户维度滑动窗口限流，防止 API Key 被恶意消耗，保障高并发下的响应稳定性。</p>
               </div>
             </div>
           </div>
 
           <aside class="project-side">
             <div class="project-stat">
-              <strong>毫秒级</strong>
-              <span>对话首字等待</span>
+              <strong>幂等</strong>
+              <span>requestId + 唯一索引</span>
             </div>
             <div class="project-stat">
-              <strong>3<small>端</small></strong>
-              <span>用户端 / 商家端 / 服务端</span>
+              <strong>原子</strong>
+              <span>库存条件扣减</span>
+            </div>
+            <div class="project-stat">
+              <strong>双通路</strong>
+              <span>RAG + Tool Calling</span>
             </div>
 
             <div class="flow-card">
-              <p class="flow-title">RAG + TOOL CALLING</p>
+              <p class="flow-title">RAG + FUNCTION CALLING</p>
               <ol class="flow-list">
                 <li>自然语言输入</li>
                 <li>意图识别</li>
                 <li>知识检索 / 工具调度</li>
                 <li>实时查询</li>
-                <li>SSE 流式回复</li>
+                <li>生成回答</li>
               </ol>
             </div>
           </aside>
@@ -381,11 +315,12 @@
 
         <footer class="project-footer">
           <div class="tag-row" aria-label="技术栈">
-            <span>Spring Boot</span><span>Spring AI</span><span>MySQL</span><span>Redis</span><span>DeepSeek</span><span>SSE</span><span>JWT</span><span>Vue 3</span><span>UniApp</span>
+            <span>Spring Boot</span><span>Spring AI</span><span>MyBatis-Plus</span><span>MySQL</span><span>Redis</span><span>DeepSeek API</span><span>Nginx</span><span>Vercel</span>
           </div>
-          <span class="project-type">FULL-STACK / AI</span>
+          <span class="project-type">FULL-STACK / COMMERCE</span>
         </footer>
       </article>
+
     </section>
 
     <section class="section section-tinted" id="skills" aria-labelledby="skills-title">
